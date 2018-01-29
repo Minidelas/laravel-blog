@@ -39,11 +39,7 @@
                     <ul class="nav navbar-nav">
                         @guest
                         @else
-                            <li>
-                                <a href="{{ route('index') }}">
-                                    Articles
-                                </a>
-                            </li>
+                          <li><a href="{{ route('home') }}">Home</a></li>
                         @endguest
                     </ul>
 

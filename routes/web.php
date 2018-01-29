@@ -22,9 +22,12 @@ Route::get('/home', 'HomeController@index')
           ->middleware('auth')
           ->name('home');
 
-Route::get('/index', 'Articles\ArticlesController@index')
-          ->middleware('auth')
-          ->name('index');
+Route::get('/create/article',         'ArticleController@create');
+Route::post('/create/article',        'ArticleController@store');
+Route::get('/articles',               'ArticleController@index');
+Route::get('/edit/article/{id}',      'ArticleController@edit');
+Route::post('/edit/article/{id}',     'ArticleController@update');
+Route::delete('/delete/article/{id}', 'ArticleController@destroy');
 
 Route::match(['get', 'post'], '/submit', 'LinkController@submit')
           ->middleware('auth')
