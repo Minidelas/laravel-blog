@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +13,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
+
+Route::get('/', 'WelcomeController@welcome')
+          ->name('welcome');
+
+Route::get('/home', 'HomeController@index')
+          ->middleware('auth')
+          ->name('home');
+
+Route::get('/index', 'Articles\ArticlesController@index')
+          ->middleware('auth')
+          ->name('index');
+
+Route::match(['get', 'post'], '/submit', 'LinkController@submit')
+          ->middleware('auth')
+          ->name('submit');
