@@ -7,6 +7,10 @@ html, body {
     margin: 0;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .full-height {
     height: 100vh;
 }
@@ -27,16 +31,16 @@ html, body {
     top: 18px;
 }
 
-.content {
-    text-align: center;
-}
-
 .title {
     font-size: 84px;
 }
 
 .subtitle {
     font-size: 42px;
+}
+
+.subtitle .username {
+    font-size: 21px;
 }
 
 .links > a {
@@ -58,7 +62,7 @@ html, body {
   border-width: 1px 1px 1px 1px;
   border-radius: 5px 5px 0 0;
   padding: 5px 10px;
-  background-color: #D0FDFD;
+  background-color: #EBFEFE;
 }
 
 .article-content {
@@ -68,6 +72,13 @@ html, body {
   padding: 5px 10px;
 }
 
+.article-content-show {
+  border: 1px solid;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
 .m-b-md {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }

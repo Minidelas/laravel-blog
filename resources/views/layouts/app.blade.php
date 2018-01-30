@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'BIOB') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -30,7 +30,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ route('welcome') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'BIOB') }}
                     </a>
                 </div>
 
@@ -66,11 +66,6 @@
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
-                                    </li>
-                                    <li>
-                                        <a href="{{ route('submit') }}">
-                                          Add Link
-                                        </a>
                                     </li>
                                 </ul>
                             </li>

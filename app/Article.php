@@ -12,7 +12,7 @@ class Article extends Model
       'content'
     ];
 
-    public function saveTicket($data)
+    public function saveArticle($data)
     {
         $this->user_id = auth()->user()->id;
         $this->title = $data['title'];

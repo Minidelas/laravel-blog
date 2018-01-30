@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Article;
+use App\Comment;
+use App\User;
 
 class ArticleController extends Controller
 {
@@ -17,7 +19,7 @@ class ArticleController extends Controller
     {
         $articles = Article::where('user_id', auth()->user()->id)->get();
 
-        return view('article.index',compact('articles'));
+        return view('article.index', compact('articles'));
     }
 
     /**
@@ -44,7 +46,7 @@ class ArticleController extends Controller
           'content' => 'required'
         ]);
 
-        $article->saveTicket($data);
+        $article->saveArticle($data);
 
         return redirect('/home')->with('success', 'Added');
     }
@@ -57,7 +59,11 @@ class ArticleController extends Controller
      */
     public function show($id)
     {
-        //
+        $article = Article::find($id);
+        $user = User::find($article->user_id);
+        $comments = Comment::where('article_id', $id)->get();
+
+        return view('article.show', compact('article', 'comments', 'user'));
     }
 
     /**
@@ -71,8 +77,12 @@ class ArticleController extends Controller
         $article = Article::where('user_id', auth()->user()->id)
                           ->where('id', $id)
                           ->first();
+        if (count($article) > 0) {
+          return view('article.edit', compact('article', 'id'));
+        } else {
+          return redirect('/home')->with('reject', 'Not allowed.');
+        }
 
-        return view('article.edit', compact('article', 'id'));
     }
 
     /**

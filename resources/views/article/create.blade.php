@@ -12,7 +12,7 @@
     </div><br />
 @endif
     <div class="row">
-    <form method="post" action="{{ url('/create/article' )}}">
+    <form method="post" action="{{ url('/create/article') }}">
         <div class="form-group">
             <input type="hidden" value="{{csrf_token()}}" name="_token" />
             <label for="title">Title:</label>

@@ -22,13 +22,20 @@ Route::get('/home', 'HomeController@index')
           ->middleware('auth')
           ->name('home');
 
-Route::get('/create/article',         'ArticleController@create');
-Route::post('/create/article',        'ArticleController@store');
-Route::get('/articles',               'ArticleController@index');
-Route::get('/edit/article/{id}',      'ArticleController@edit');
-Route::post('/edit/article/{id}',     'ArticleController@update');
-Route::delete('/delete/article/{id}', 'ArticleController@destroy');
+// Articles
+Route::get('/create/article',         'ArticleController@create')
+          ->middleware('auth');
+Route::post('/create/article',        'ArticleController@store')
+          ->middleware('auth');
+Route::get('/articles',               'ArticleController@index')
+          ->middleware('auth');
+Route::get('/edit/article/{id}',      'ArticleController@edit')
+          ->middleware('auth');
+Route::get('/article/{id}',           'ArticleController@show');
+Route::post('/edit/article/{id}',     'ArticleController@update')
+          ->middleware('auth');
+Route::delete('/delete/article/{id}', 'ArticleController@destroy')
+          ->middleware('auth');
 
-Route::match(['get', 'post'], '/submit', 'LinkController@submit')
-          ->middleware('auth')
-          ->name('submit');
+// Comments
+Route::post('/create/comment',        'CommentController@store');
