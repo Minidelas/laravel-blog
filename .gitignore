@@ -11,3 +11,5 @@ npm-debug.log
 yarn-error.log
 .env
 .env.example_bck
+
+\.DS_Store

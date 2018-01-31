@@ -70,6 +70,7 @@ textarea {
   border-width: 0px 1px 1px 1px;
   border-radius: 0 0 5px 5px;
   padding: 5px 10px;
+  margin-bottom: 10px;
 }
 
 .article-content-show {

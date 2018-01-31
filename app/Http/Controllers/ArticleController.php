@@ -54,14 +54,13 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $article
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        $article = Article::find($id);
         $user = User::find($article->user_id);
-        $comments = Comment::where('article_id', $id)->get();
+        $comments = Comment::where('article_id', $article->id)->get();
 
         return view('article.show', compact('article', 'comments', 'user'));
     }
@@ -108,7 +107,7 @@ class ArticleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $id<
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -117,5 +116,33 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect('/home')->with('success', 'Article deleted');
+    }
+
+    /**
+     * Upvote the specified resource.
+     *
+     * @param  int  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function upvote(Request $request, Article $article)
+    {
+        if ($article->upvoteArticle($article)) {
+          return response()->json(null, 200);
+        }
+        return response()->json(null, 404);
+    }
+
+    /**
+     * Downvote the specified resource.
+     *
+     * @param  int  $article
+     * @return \Illuminate\Http\Response
+     */
+    public function downvote(Request $request, Article $article)
+    {
+        if ($article->downvoteArticle($article)) {
+          return response()->json(null, 200);
+        }
+        return response()->json(null, 404);
     }
 }

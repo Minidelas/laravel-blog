@@ -31,7 +31,7 @@ Route::get('/articles',               'ArticleController@index')
           ->middleware('auth');
 Route::get('/edit/article/{id}',      'ArticleController@edit')
           ->middleware('auth');
-Route::get('/article/{id}',           'ArticleController@show');
+Route::get('/article/{article}',           'ArticleController@show');
 Route::post('/edit/article/{id}',     'ArticleController@update')
           ->middleware('auth');
 Route::delete('/delete/article/{id}', 'ArticleController@destroy')

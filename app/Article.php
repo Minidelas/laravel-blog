@@ -30,4 +30,24 @@ class Article extends Model
         $article->save();
         return 1;
     }
+
+    public function upvoteArticle($article)
+    {
+      $article->likes = $article->likes + 1;
+      if ($article->save()) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
+
+    public function downvoteArticle($article)
+    {
+      $article->dislikes = $article->dislikes + 1;
+      if ($article->save()) {
+        return 1;
+      } else {
+        return 0;
+      }
+    }
 }
